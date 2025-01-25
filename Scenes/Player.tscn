@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdlquej35f8td"]
+
+[ext_resource type="Texture2D" uid="uid://csjfrw7o00r1t" path="res://Sprites/Bubbles/Bubbles.png" id="1_q0l7v"]
+
+[node name="Player" type="Node2D"]
+
+[node name="BubblesSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_q0l7v")

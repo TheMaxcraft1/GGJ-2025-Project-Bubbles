@@ -1,0 +1,8 @@
+01/25/25
+
+- Yesterday, friday I made the design. The idea is to make a game in which the player is a bubble. With
+  a button he can become many bubbles. When he is only one big bubble, he is able to move boxes in order
+  to press a button and open a gate. When he is many bubbles he can move faster and pass through those gates.
+  Maybe I need to think another ability for the last.
+- My project management idea is to have the basic mechanics today. And tomorrow sunday work on the level design.
+  Let's see what happens :3

@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://288kc7i15jwk"]
+
+[ext_resource type="Texture2D" uid="uid://cd8tw2dwmyvuh" path="res://Sprites/Gate/Gate.png" id="1_2bvs2"]
+[ext_resource type="Script" path="res://Scripts/Gate.gd" id="1_v6m1f"]
+[ext_resource type="Texture2D" uid="uid://bykkrobh4inql" path="res://Sprites/Gate/GateSustainer.png" id="2_iodpd"]
+[ext_resource type="Texture2D" uid="uid://dfywqgi43rhca" path="res://Sprites/Gate/GateKeeper.png" id="3_1y56i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fq6u7"]
+size = Vector2(10, 65)
+
+[sub_resource type="Animation" id="Animation_amxmw"]
+resource_name = "GateOpenClose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GateSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GateColShape:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0.5), Vector2(0, -64)]
+}
+
+[sub_resource type="Animation" id="Animation_7d0on"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GateSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GateColShape:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e7t4k"]
+_data = {
+"GateOpenClose": SubResource("Animation_amxmw"),
+"RESET": SubResource("Animation_7d0on")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfd3n"]
+size = Vector2(5, 71)
+
+[node name="Gate" type="StaticBody2D"]
+script = ExtResource("1_v6m1f")
+
+[node name="GateSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2bvs2")
+
+[node name="GateSutainer" type="Sprite2D" parent="."]
+texture = ExtResource("2_iodpd")
+
+[node name="GateKeeper" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+texture = ExtResource("3_1y56i")
+
+[node name="GateColShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_fq6u7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e7t4k")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5, -60.5)
+shape = SubResource("RectangleShape2D_jfd3n")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(7, -61)
+shape = SubResource("RectangleShape2D_jfd3n")

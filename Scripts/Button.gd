@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+@export var relatedGate : StaticBody2D
+
 var UNPRESSED_SPRITE = preload("res://Sprites/Buttons/UnpressedButton.png")
 var PRESSED_SPRITE = preload("res://Sprites/Buttons/PressedButton.png")
 var RED_COLOR : Color = Color("ff0000")
@@ -19,9 +21,9 @@ func _process(delta: float) -> void:
 func _on_button_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Box"):
 		isButtonPressed = true
-		#GATE.OPEN
+		relatedGate.openGate()
 
 func _on_button_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Box"):
 		isButtonPressed = false
-		#GATE.CLOSE
+		relatedGate.closeGate()

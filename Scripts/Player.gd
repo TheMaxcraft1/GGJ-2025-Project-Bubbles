@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-enum BUBBLE_MODES { BIG_BUBBLE, SMALL_BUBBLES }
-
 # FIRST ELEMENT WILL BE BIG_BUBBLE, SECOND ELEMENT WILL BE SMALL_BUBBLES
 # WE CAN ACCESS THE VALUES VIA THE bubbleMode var
+var BUBBLE_MODES = GameManager.BUBBLE_MODES # { BIG_BUBBLE, SMALL_BUBBLES }
 
 @export var max_speed: Array = [200, 300]
 @export var acceleration: Array = [100, 500]
@@ -22,7 +21,7 @@ func _ready():
 func _process(delta: float) -> void:
 	swapBubbleMode()
 	move(delta)
-
+	
 func move(delta: float) -> void:
 	# Entrada horizontal (izquierda y derecha)
 	var input_horizontal = 0
@@ -55,8 +54,8 @@ func swapBubbleMode() -> void:
 		else: 
 			bubble_mode = BUBBLE_MODES.BIG_BUBBLE
 		
-		
 		$BigBubble.visible = !$BigBubble.visible
 		$SmallBubbles.visible = !$SmallBubbles.visible
 		
-	
+func getBubbleMode() -> int:
+	return bubble_mode

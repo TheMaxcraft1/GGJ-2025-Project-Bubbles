@@ -1,5 +1,6 @@
 extends Node
 
+enum BUBBLE_MODES { BIG_BUBBLE, SMALL_BUBBLES } # BUBBLE MODES FROM WHICH THE PLAYER SWAPS
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

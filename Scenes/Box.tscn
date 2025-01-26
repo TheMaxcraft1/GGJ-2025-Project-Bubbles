@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgqnyh0icps3v"]
+
+[ext_resource type="Texture2D" uid="uid://4ktede24whur" path="res://Sprites/Box/Box.png" id="1_1j1st"]
+[ext_resource type="Script" path="res://Scripts/Box.gd" id="1_60wvo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36myv"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7rda"]
+size = Vector2(34, 34)
+
+[node name="Box" type="RigidBody2D"]
+lock_rotation = true
+script = ExtResource("1_60wvo")
+
+[node name="BoxSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_1j1st")
+
+[node name="BoxCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_36myv")
+
+[node name="BoxArea" type="Area2D" parent="."]
+
+[node name="BoxAreaShape" type="CollisionShape2D" parent="BoxArea"]
+shape = SubResource("RectangleShape2D_w7rda")
+
+[connection signal="body_entered" from="BoxArea" to="." method="_on_box_area_body_entered"]
+[connection signal="body_exited" from="BoxArea" to="." method="_on_box_area_body_exited"]

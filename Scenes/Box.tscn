@@ -9,7 +9,7 @@ size = Vector2(32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7rda"]
 size = Vector2(34, 34)
 
-[node name="Box" type="RigidBody2D"]
+[node name="Box" type="RigidBody2D" groups=["Box"]]
 lock_rotation = true
 script = ExtResource("1_60wvo")
 

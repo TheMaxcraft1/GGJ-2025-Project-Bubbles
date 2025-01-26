@@ -6,3 +6,7 @@
   Maybe I need to think another ability for the last.
 - My project management idea is to have the basic mechanics today. And tomorrow sunday work on the level design.
   Let's see what happens :3
+
+23:11
+- I Wasted 3 hours having problems with the box grabbing by the bubble implementation. ONE LINE SOLVED IT XDDD. 
+  Funny and annoying... I will always love GameDev though. It's always a challenge.

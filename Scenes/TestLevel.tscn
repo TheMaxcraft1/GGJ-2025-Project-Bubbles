@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpjxhljqkcpkj"]
+[gd_scene load_steps=5 format=3 uid="uid://dpjxhljqkcpkj"]
 
 [ext_resource type="PackedScene" uid="uid://cdlquej35f8td" path="res://Scenes/Player.tscn" id="1_aeomn"]
 [ext_resource type="PackedScene" uid="uid://bqxluxi80lfv2" path="res://Scenes/Boundaries.tscn" id="2_wmdwm"]
 [ext_resource type="PackedScene" uid="uid://cgqnyh0icps3v" path="res://Scenes/Box.tscn" id="3_jgxqw"]
+[ext_resource type="PackedScene" uid="uid://81h6831cy7dx" path="res://Scenes/Button.tscn" id="4_5o2ac"]
 
 [node name="TestLevel" type="Node2D"]
+
+[node name="Button" parent="." instance=ExtResource("4_5o2ac")]
+position = Vector2(498, 502)
 
 [node name="Player" parent="." instance=ExtResource("1_aeomn")]
 position = Vector2(76, 278)

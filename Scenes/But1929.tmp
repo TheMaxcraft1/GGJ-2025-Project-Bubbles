@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://81h6831cy7dx"]
+
+[ext_resource type="Script" path="res://Scripts/Button.gd" id="1_54w07"]
+[ext_resource type="Texture2D" uid="uid://q8yq5ywamq4o" path="res://Sprites/Buttons/PressedButton.png" id="2_mkrf0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4djk"]
+size = Vector2(48, 8)
+
+[sub_resource type="Gradient" id="Gradient_u1ng2"]
+offsets = PackedFloat32Array(0, 0.707792, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.0779221, 0.0779221, 0.0779221, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3yw3u"]
+gradient = SubResource("Gradient_u1ng2")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Button" type="StaticBody2D"]
+position = Vector2(72, 36)
+script = ExtResource("1_54w07")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_mkrf0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_i4djk")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(21, -13)
+color = Color(0, 0.607843, 0, 1)
+energy = 2.5
+texture = SubResource("GradientTexture2D_3yw3u")

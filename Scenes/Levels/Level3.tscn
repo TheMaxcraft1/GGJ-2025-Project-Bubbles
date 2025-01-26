@@ -9,8 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://288kc7i15jwk" path="res://Scenes/Gate.tscn" id="7_gpwml"]
 [ext_resource type="TileSet" uid="uid://cqjkse71hldd" path="res://Tileset/TileSet.tres" id="8_gig6k"]
 [ext_resource type="PackedScene" uid="uid://d3syqni3cw0p2" path="res://Scenes/StopWatch.tscn" id="9_rmu6x"]
-[ext_resource type="PackedScene" uid="uid://fos6qnesb1pr" path="res://Scenes/menu_background.tscn" id="10_602qd"]
-[ext_resource type="PackedScene" uid="uid://bc24dm20cuknb" path="res://Scenes/Levels/Level4.tscn" id="11_dlgwo"]
 
 [node name="Level3" type="Node2D"]
 
@@ -45,15 +43,5 @@ tile_set = ExtResource("8_gig6k")
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="StopWatch" parent="HUD" instance=ExtResource("9_rmu6x")]
-
-[node name="MenuBackground" parent="HUD" instance=ExtResource("10_602qd")]
-visible = false
-offset_left = 160.0
-offset_top = 30.0
-offset_right = -160.0
-offset_bottom = -30.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-nextLevel = ExtResource("11_dlgwo")
 
 [connection signal="_on_player_win" from="Pipe" to="Player" method="_on_pipe_on_player_win"]

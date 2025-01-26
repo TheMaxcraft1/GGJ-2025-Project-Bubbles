@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cl5i2sm44w7pi" path="res://Scenes/Pipe.tscn" id="4_uoh2d"]
 [ext_resource type="FontFile" uid="uid://dmxiujyrkindb" path="res://Fonts/Bubybins.ttf" id="5_cy2cl"]
 [ext_resource type="PackedScene" uid="uid://d3syqni3cw0p2" path="res://Scenes/StopWatch.tscn" id="6_vtdbu"]
-[ext_resource type="PackedScene" uid="uid://fos6qnesb1pr" path="res://Scenes/menu_background.tscn" id="7_0dt5e"]
-[ext_resource type="PackedScene" uid="uid://dpqb5fmgv87et" path="res://Scenes/Levels/Level2.tscn" id="8_tbso4"]
 
 [sub_resource type="Theme" id="Theme_0pkqs"]
 default_font = ExtResource("5_cy2cl")
@@ -44,15 +42,5 @@ SPACE TO GO UP
 C To transform"
 
 [node name="StopWatch" parent="HUD" instance=ExtResource("6_vtdbu")]
-
-[node name="MenuBackground" parent="HUD" instance=ExtResource("7_0dt5e")]
-visible = false
-offset_left = 160.0
-offset_top = 30.0
-offset_right = -160.0
-offset_bottom = -30.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-nextLevel = ExtResource("8_tbso4")
 
 [connection signal="_on_player_win" from="Pipe" to="Player" method="_on_pipe_on_player_win"]

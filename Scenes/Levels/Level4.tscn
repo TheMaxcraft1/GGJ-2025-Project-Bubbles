@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bc24dm20cuknb"]
+[gd_scene load_steps=10 format=4 uid="uid://bc24dm20cuknb"]
 
 [ext_resource type="PackedScene" uid="uid://bqxluxi80lfv2" path="res://Scenes/Boundaries.tscn" id="1_t0tqm"]
 [ext_resource type="PackedScene" uid="uid://7otsuh2drkuu" path="res://Scenes/LevelBackground.tscn" id="2_n0osy"]
@@ -9,8 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://81h6831cy7dx" path="res://Scenes/Button.tscn" id="7_5w5pf"]
 [ext_resource type="PackedScene" uid="uid://cgqnyh0icps3v" path="res://Scenes/Box.tscn" id="7_kkxit"]
 [ext_resource type="PackedScene" uid="uid://d3syqni3cw0p2" path="res://Scenes/StopWatch.tscn" id="9_b2r0n"]
-[ext_resource type="PackedScene" uid="uid://fos6qnesb1pr" path="res://Scenes/menu_background.tscn" id="10_mlkka"]
-[ext_resource type="PackedScene" uid="uid://by7e748qacju8" path="res://Scenes/StartMenu.tscn" id="11_fcyem"]
 
 [node name="Level4" type="Node2D"]
 
@@ -55,15 +53,5 @@ relatedGate = NodePath("../BottomGate")
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="StopWatch" parent="HUD" instance=ExtResource("9_b2r0n")]
-
-[node name="MenuBackground" parent="HUD" instance=ExtResource("10_mlkka")]
-visible = false
-offset_left = 160.0
-offset_top = 30.0
-offset_right = -160.0
-offset_bottom = -30.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-nextLevel = ExtResource("11_fcyem")
 
 [connection signal="_on_player_win" from="Pipe" to="Player" method="_on_pipe_on_player_win"]

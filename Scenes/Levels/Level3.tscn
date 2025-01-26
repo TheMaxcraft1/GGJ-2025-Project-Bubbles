@@ -1,0 +1,59 @@
+[gd_scene load_steps=12 format=3 uid="uid://csigwc1ka7crk"]
+
+[ext_resource type="PackedScene" uid="uid://7otsuh2drkuu" path="res://Scenes/LevelBackground.tscn" id="1_8ds6o"]
+[ext_resource type="PackedScene" uid="uid://bqxluxi80lfv2" path="res://Scenes/Boundaries.tscn" id="2_7yre0"]
+[ext_resource type="PackedScene" uid="uid://cdlquej35f8td" path="res://Scenes/Player.tscn" id="3_qct6q"]
+[ext_resource type="PackedScene" uid="uid://cgqnyh0icps3v" path="res://Scenes/Box.tscn" id="4_2c8e7"]
+[ext_resource type="PackedScene" uid="uid://81h6831cy7dx" path="res://Scenes/Button.tscn" id="5_q7ng6"]
+[ext_resource type="PackedScene" uid="uid://cl5i2sm44w7pi" path="res://Scenes/Pipe.tscn" id="6_cxepi"]
+[ext_resource type="PackedScene" uid="uid://288kc7i15jwk" path="res://Scenes/Gate.tscn" id="7_gpwml"]
+[ext_resource type="TileSet" uid="uid://cqjkse71hldd" path="res://Tileset/TileSet.tres" id="8_gig6k"]
+[ext_resource type="PackedScene" uid="uid://d3syqni3cw0p2" path="res://Scenes/StopWatch.tscn" id="9_rmu6x"]
+[ext_resource type="PackedScene" uid="uid://fos6qnesb1pr" path="res://Scenes/menu_background.tscn" id="10_602qd"]
+[ext_resource type="PackedScene" uid="uid://bc24dm20cuknb" path="res://Scenes/Levels/Level4.tscn" id="11_dlgwo"]
+
+[node name="Level3" type="Node2D"]
+
+[node name="LevelBackground" parent="." instance=ExtResource("1_8ds6o")]
+
+[node name="Boundaries" parent="." instance=ExtResource("2_7yre0")]
+
+[node name="Player" parent="." instance=ExtResource("3_qct6q")]
+position = Vector2(60, 270)
+
+[node name="Box" parent="." instance=ExtResource("4_2c8e7")]
+position = Vector2(350, 422)
+
+[node name="Button" parent="." node_paths=PackedStringArray("relatedGate") instance=ExtResource("5_q7ng6")]
+position = Vector2(755, 501)
+relatedGate = NodePath("../Gate")
+
+[node name="Pipe" parent="." instance=ExtResource("6_cxepi")]
+position = Vector2(947, 89)
+rotation = -1.5708
+scale = Vector2(1.68, 1.68)
+
+[node name="Gate" parent="." instance=ExtResource("7_gpwml")]
+position = Vector2(853, 96)
+scale = Vector2(1, 3.08)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-8, 36)
+tile_map_data = PackedByteArray(0, 0, 18, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = ExtResource("8_gig6k")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="StopWatch" parent="HUD" instance=ExtResource("9_rmu6x")]
+
+[node name="MenuBackground" parent="HUD" instance=ExtResource("10_602qd")]
+visible = false
+offset_left = 160.0
+offset_top = 30.0
+offset_right = -160.0
+offset_bottom = -30.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+nextLevel = ExtResource("11_dlgwo")
+
+[connection signal="_on_player_win" from="Pipe" to="Player" method="_on_pipe_on_player_win"]

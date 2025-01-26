@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3syqni3cw0p2"]
+
+[ext_resource type="Script" path="res://Scripts/StopWatch.gd" id="1_0a5og"]
+[ext_resource type="FontFile" uid="uid://dmxiujyrkindb" path="res://Fonts/Bubybins.ttf" id="2_ka1te"]
+
+[sub_resource type="Theme" id="Theme_0pkqs"]
+default_font = ExtResource("2_ka1te")
+default_font_size = 32
+
+[node name="StopWatch" type="Node" groups=["StopWatch"]]
+script = ExtResource("1_0a5og")
+
+[node name="StopWatchLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 53.0
+grow_horizontal = 2
+theme = SubResource("Theme_0pkqs")
+theme_override_colors/font_color = Color(0.493689, 0.528957, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "00:00"
+vertical_alignment = 1

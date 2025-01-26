@@ -1,0 +1,141 @@
+[gd_scene load_steps=9 format=3 uid="uid://fos6qnesb1pr"]
+
+[ext_resource type="Texture2D" uid="uid://bqbmviyi1xu5i" path="res://Sprites/UI/MenuBackground.png" id="1_211cl"]
+[ext_resource type="Script" path="res://Scenes/menu_background.gd" id="1_t4ol6"]
+[ext_resource type="PackedScene" uid="uid://djxpmaadi7dwh" path="res://Scenes/lvl_button.tscn" id="2_txtuq"]
+[ext_resource type="PackedScene" uid="uid://by7e748qacju8" path="res://Scenes/StartMenu.tscn" id="3_gnsr4"]
+[ext_resource type="FontFile" uid="uid://dmxiujyrkindb" path="res://Fonts/Bubybins.ttf" id="5_1vbmy"]
+[ext_resource type="Texture2D" uid="uid://58gyxyc1f7vc" path="res://Sprites/UI/EmptyStar.png" id="6_64u3f"]
+[ext_resource type="Texture2D" uid="uid://dxy53pnopxi4a" path="res://Sprites/UI/FilledStar.png" id="7_h1eej"]
+
+[sub_resource type="Theme" id="Theme_0pkqs"]
+default_font = ExtResource("5_1vbmy")
+default_font_size = 32
+
+[node name="MenuBackground" type="Control" groups=["PassLevelMenu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -320.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t4ol6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -296.0
+offset_top = -161.0
+offset_right = -256.0
+offset_bottom = -121.0
+scale = Vector2(30.3617, 20.9551)
+color = Color(0, 0, 0, 0.368627)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_211cl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -95.0
+offset_right = 161.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 200
+
+[node name="MainMenu" parent="HBoxContainer" instance=ExtResource("2_txtuq")]
+layout_mode = 2
+text = "Main Menu"
+level = ExtResource("3_gnsr4")
+
+[node name="LvlButton" parent="HBoxContainer" instance=ExtResource("2_txtuq")]
+layout_mode = 2
+text = "Next Level"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.0
+offset_top = 57.0
+offset_right = 115.0
+offset_bottom = 159.0
+grow_horizontal = 2
+theme = SubResource("Theme_0pkqs")
+theme_override_colors/font_color = Color(0.493689, 0.528957, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 88
+text = "00 : 00"
+
+[node name="StarContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -45.0
+offset_right = 85.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 140
+
+[node name="Star1" type="Control" parent="StarContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="StarContainer/Star1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_64u3f")
+
+[node name="TextureRect2" type="TextureRect" parent="StarContainer/Star1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_h1eej")
+
+[node name="Star2" type="Control" parent="StarContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="StarContainer/Star2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_64u3f")
+
+[node name="TextureRect2" type="TextureRect" parent="StarContainer/Star2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_h1eej")
+
+[node name="Star3" type="Control" parent="StarContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="StarContainer/Star3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_64u3f")
+
+[node name="TextureRect2" type="TextureRect" parent="StarContainer/Star3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_h1eej")

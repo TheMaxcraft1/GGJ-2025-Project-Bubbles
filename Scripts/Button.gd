@@ -19,11 +19,11 @@ func _process(delta: float) -> void:
 		$PointLight2D.color = RED_COLOR
 
 func _on_button_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Box"):
+	if body.is_in_group("Box") or body.name == "Player":
 		isButtonPressed = true
 		relatedGate.openGate()
 
 func _on_button_area_2d_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Box"):
+	if body.is_in_group("Box") or body.name == "Player":
 		isButtonPressed = false
 		relatedGate.closeGate()

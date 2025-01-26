@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dde8jxdv8p225"]
+
+[ext_resource type="Texture2D" uid="uid://dvm6b4j4ie270" path="res://Sprites/Transition/Transition.png" id="1_vqxle"]
+[ext_resource type="FontFile" uid="uid://dmxiujyrkindb" path="res://Fonts/Bubybins.ttf" id="2_p8wwj"]
+
+[sub_resource type="Theme" id="Theme_0pkqs"]
+default_font = ExtResource("2_p8wwj")
+default_font_size = 32
+
+[node name="LevelTransition" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_vqxle")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0pkqs")
+theme_override_colors/font_color = Color(0.493689, 0.528957, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 86
+text = "LEVEL"

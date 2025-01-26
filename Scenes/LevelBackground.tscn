@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://7otsuh2drkuu"]
+
+[ext_resource type="Texture2D" uid="uid://dnqyrqc1oya4e" path="res://Sprites/Background/Background1.png" id="1_voqdo"]
+[ext_resource type="Shader" path="res://Shaders/UnderWater.gdshader" id="2_5nx5t"]
+[ext_resource type="Texture2D" uid="uid://bwrine5mudkss" path="res://icon.svg" id="3_ud5jk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1st2y"]
+noise_type = 2
+frequency = 0.0047
+fractal_type = 2
+fractal_gain = -0.455
+fractal_weighted_strength = 0.73
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5yxy0"]
+seamless = true
+seamless_blend_skirt = 0.6
+noise = SubResource("FastNoiseLite_1st2y")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v37n2"]
+shader = ExtResource("2_5nx5t")
+shader_parameter/color = Color(0.270588, 0.666667, 0.780392, 1)
+shader_parameter/speed = Vector2(0.03, 0.07)
+shader_parameter/wave_strength = 2.0
+shader_parameter/fast_noise = SubResource("NoiseTexture2D_5yxy0")
+
+[node name="LevelBackground" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(480, 270)
+texture = ExtResource("1_voqdo")
+
+[node name="Shader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_v37n2")
+position = Vector2(487, 271.5)
+scale = Vector2(8.65625, 4.39844)
+texture = ExtResource("3_ud5jk")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpqb5fmgv87et"]
+
+[ext_resource type="PackedScene" uid="uid://d3syqni3cw0p2" path="res://Scenes/StopWatch.tscn" id="1_es2yc"]
+[ext_resource type="PackedScene" uid="uid://bqxluxi80lfv2" path="res://Scenes/Boundaries.tscn" id="1_yf6eu"]
+[ext_resource type="PackedScene" uid="uid://7otsuh2drkuu" path="res://Scenes/LevelBackground.tscn" id="2_6cl8p"]
+[ext_resource type="PackedScene" uid="uid://cdlquej35f8td" path="res://Scenes/Player.tscn" id="3_w06qu"]
+[ext_resource type="PackedScene" uid="uid://cl5i2sm44w7pi" path="res://Scenes/Pipe.tscn" id="4_5ob4f"]
+[ext_resource type="PackedScene" uid="uid://288kc7i15jwk" path="res://Scenes/Gate.tscn" id="5_7cxy6"]
+[ext_resource type="TileSet" uid="uid://cqjkse71hldd" path="res://Tileset/TileSet.tres" id="6_1kf4q"]
+[ext_resource type="PackedScene" uid="uid://81h6831cy7dx" path="res://Scenes/Button.tscn" id="7_7d0dx"]
+[ext_resource type="PackedScene" uid="uid://fos6qnesb1pr" path="res://Scenes/menu_background.tscn" id="9_nvsnm"]
+[ext_resource type="PackedScene" uid="uid://csigwc1ka7crk" path="res://Scenes/Levels/Level3.tscn" id="10_jt0vd"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="Boundaries" parent="." instance=ExtResource("1_yf6eu")]
+
+[node name="LevelBackground" parent="." instance=ExtResource("2_6cl8p")]
+
+[node name="Player" parent="." instance=ExtResource("3_w06qu")]
+position = Vector2(60, 270)
+
+[node name="Pipe" parent="." instance=ExtResource("4_5ob4f")]
+position = Vector2(947, 89)
+rotation = -1.5708
+scale = Vector2(1.68, 1.68)
+
+[node name="Gate" parent="." instance=ExtResource("5_7cxy6")]
+position = Vector2(853, 96)
+scale = Vector2(1, 3.08)
+CloseSpeedScale = 0.15
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-8, 36)
+tile_map_data = PackedByteArray(0, 0, 18, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = ExtResource("6_1kf4q")
+
+[node name="Button" parent="." node_paths=PackedStringArray("relatedGate") instance=ExtResource("7_7d0dx")]
+position = Vector2(755, 501)
+relatedGate = NodePath("../Gate")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="StopWatch" parent="HUD" instance=ExtResource("1_es2yc")]
+
+[node name="MenuBackground" parent="HUD" instance=ExtResource("9_nvsnm")]
+offset_left = 160.0
+offset_top = 30.0
+offset_right = -160.0
+offset_bottom = -30.0
+nextLevel = ExtResource("10_jt0vd")
+
+[connection signal="_on_player_win" from="Pipe" to="Player" method="_on_pipe_on_player_win"]

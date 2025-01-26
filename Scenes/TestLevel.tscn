@@ -1,24 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpjxhljqkcpkj"]
+[gd_scene load_steps=8 format=3 uid="uid://dpjxhljqkcpkj"]
 
-[ext_resource type="Texture2D" uid="uid://dnqyrqc1oya4e" path="res://Sprites/Background/Background1.png" id="1_abcv5"]
 [ext_resource type="PackedScene" uid="uid://cdlquej35f8td" path="res://Scenes/Player.tscn" id="1_aeomn"]
+[ext_resource type="PackedScene" uid="uid://7otsuh2drkuu" path="res://Scenes/LevelBackground.tscn" id="1_w8xll"]
 [ext_resource type="PackedScene" uid="uid://bqxluxi80lfv2" path="res://Scenes/Boundaries.tscn" id="2_wmdwm"]
 [ext_resource type="PackedScene" uid="uid://cgqnyh0icps3v" path="res://Scenes/Box.tscn" id="3_jgxqw"]
 [ext_resource type="PackedScene" uid="uid://81h6831cy7dx" path="res://Scenes/Button.tscn" id="4_5o2ac"]
 [ext_resource type="PackedScene" uid="uid://288kc7i15jwk" path="res://Scenes/Gate.tscn" id="5_uarkd"]
+[ext_resource type="TileSet" uid="uid://cqjkse71hldd" path="res://Tileset/TileSet.tres" id="7_eb86j"]
 
 [node name="TestLevel" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(480, 270)
-texture = ExtResource("1_abcv5")
-
-[node name="Button" parent="." node_paths=PackedStringArray("relatedGate") instance=ExtResource("4_5o2ac")]
-position = Vector2(498, 502)
-relatedGate = NodePath("../Gate")
-
-[node name="Player" parent="." instance=ExtResource("1_aeomn")]
-position = Vector2(76, 278)
+[node name="LevelBackground" parent="." instance=ExtResource("1_w8xll")]
 
 [node name="Boundaries" parent="." instance=ExtResource("2_wmdwm")]
 
@@ -28,3 +20,14 @@ position = Vector2(209, 109)
 [node name="Gate" parent="." instance=ExtResource("5_uarkd")]
 position = Vector2(703, 323)
 scale = Vector2(1, 2)
+
+[node name="Button" parent="." node_paths=PackedStringArray("relatedGate") instance=ExtResource("4_5o2ac")]
+position = Vector2(498, 502)
+relatedGate = NodePath("../Gate")
+
+[node name="Player" parent="." instance=ExtResource("1_aeomn")]
+position = Vector2(76, 278)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 6, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = ExtResource("7_eb86j")

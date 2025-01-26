@@ -7,11 +7,13 @@ var BUBBLE_MODES = GameManager.BUBBLE_MODES # { BIG_BUBBLE, SMALL_BUBBLES }
 @export var max_speed: Array = [200, 300]
 @export var acceleration: Array = [100, 500]
 @export var deceleration: Array = [200, 300]
-@export var ascend_speed: float = 100
+@export var ascend_speed: Array = [100, 250]
 @export var gravity: float = 200
 
 var bubble_mode: int
 var big_bubble : Node2D
+
+var playerCanControl: bool = true
 
 func _ready():
 	bubble_mode = BUBBLE_MODES.BIG_BUBBLE
@@ -19,8 +21,9 @@ func _ready():
 	$SmallBubbles.visible = false
 
 func _process(delta: float) -> void:
-	swapBubbleMode()
-	move(delta)
+	if playerCanControl:
+		swapBubbleMode()
+		move(delta)
 	
 func move(delta: float) -> void:
 	# Entrada horizontal (izquierda y derecha)
@@ -39,7 +42,7 @@ func move(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, deceleration[bubble_mode] * delta)
 
 	if Input.is_action_pressed("ui_accept"):
-		velocity.y = -ascend_speed
+		velocity.y = -ascend_speed[bubble_mode]
 	else:
 		# Gravedad que afecta al personaje
 		velocity.y += gravity * delta
@@ -59,3 +62,7 @@ func swapBubbleMode() -> void:
 		
 func getBubbleMode() -> int:
 	return bubble_mode
+
+
+func _on_pipe_on_player_win() -> void:
+	playerCanControl = false

@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0n51hqj3d73e"]
+
+[ext_resource type="PackedScene" uid="uid://7otsuh2drkuu" path="res://Scenes/LevelBackground.tscn" id="1_2o7se"]
+[ext_resource type="PackedScene" uid="uid://bqxluxi80lfv2" path="res://Scenes/Boundaries.tscn" id="2_qi2cy"]
+[ext_resource type="PackedScene" uid="uid://cdlquej35f8td" path="res://Scenes/Player.tscn" id="3_3j4u4"]
+[ext_resource type="PackedScene" uid="uid://cl5i2sm44w7pi" path="res://Scenes/Pipe.tscn" id="4_uoh2d"]
+[ext_resource type="FontFile" uid="uid://dmxiujyrkindb" path="res://Fonts/Bubybins.ttf" id="5_cy2cl"]
+[ext_resource type="PackedScene" uid="uid://d3syqni3cw0p2" path="res://Scenes/StopWatch.tscn" id="6_vtdbu"]
+[ext_resource type="PackedScene" uid="uid://fos6qnesb1pr" path="res://Scenes/menu_background.tscn" id="7_0dt5e"]
+[ext_resource type="PackedScene" uid="uid://dpqb5fmgv87et" path="res://Scenes/Levels/Level2.tscn" id="8_tbso4"]
+
+[sub_resource type="Theme" id="Theme_0pkqs"]
+default_font = ExtResource("5_cy2cl")
+default_font_size = 32
+
+[node name="Level1" type="Node2D"]
+
+[node name="LevelBackground" parent="." instance=ExtResource("1_2o7se")]
+
+[node name="Boundaries" parent="." instance=ExtResource("2_qi2cy")]
+
+[node name="Player" parent="." instance=ExtResource("3_3j4u4")]
+position = Vector2(60, 270)
+
+[node name="Pipe" parent="." instance=ExtResource("4_uoh2d")]
+position = Vector2(948, 468)
+rotation = -1.5708
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Controls" type="Label" parent="HUD"]
+offset_top = 8.0
+offset_right = 395.0
+offset_bottom = 140.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_0pkqs")
+theme_override_colors/font_color = Color(0.493689, 0.528957, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+text = "LEFT/RIGHT ARROWS TO MOVE.
+SPACE TO GO UP
+C To transform"
+
+[node name="StopWatch" parent="HUD" instance=ExtResource("6_vtdbu")]
+
+[node name="MenuBackground" parent="HUD" instance=ExtResource("7_0dt5e")]
+visible = false
+offset_left = 160.0
+offset_top = 30.0
+offset_right = -160.0
+offset_bottom = -30.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+nextLevel = ExtResource("8_tbso4")
+
+[connection signal="_on_player_win" from="Pipe" to="Player" method="_on_pipe_on_player_win"]

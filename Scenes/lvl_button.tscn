@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://djxpmaadi7dwh"]
+
+[ext_resource type="FontFile" uid="uid://dmxiujyrkindb" path="res://Fonts/Bubybins.ttf" id="1_8wsu7"]
+[ext_resource type="Script" path="res://Scripts/lvl_button.gd" id="1_wrs55"]
+
+[sub_resource type="Theme" id="Theme_0pkqs"]
+default_font = ExtResource("1_8wsu7")
+default_font_size = 32
+
+[node name="LvlButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = SubResource("Theme_0pkqs")
+text = "LEVEL 1"
+script = ExtResource("1_wrs55")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

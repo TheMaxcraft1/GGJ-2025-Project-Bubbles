@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4che3smw0802"]
+
+[ext_resource type="Texture2D" uid="uid://dvm6b4j4ie270" path="res://Sprites/Transition/Transition.png" id="1_vw54i"]
+[ext_resource type="PackedScene" uid="uid://djxpmaadi7dwh" path="res://Scenes/lvl_button.tscn" id="2_u43w2"]
+[ext_resource type="PackedScene" uid="uid://b0n51hqj3d73e" path="res://Scenes/Levels/Level1.tscn" id="3_klbox"]
+[ext_resource type="PackedScene" uid="uid://dpqb5fmgv87et" path="res://Scenes/Levels/Level2.tscn" id="4_7uuds"]
+[ext_resource type="PackedScene" uid="uid://csigwc1ka7crk" path="res://Scenes/Levels/Level3.tscn" id="5_aia6o"]
+[ext_resource type="FontFile" uid="uid://dmxiujyrkindb" path="res://Fonts/Bubybins.ttf" id="5_n0drp"]
+[ext_resource type="PackedScene" uid="uid://bc24dm20cuknb" path="res://Scenes/Levels/Level4.tscn" id="6_kefvc"]
+
+[sub_resource type="Theme" id="Theme_hav02"]
+default_font = ExtResource("5_n0drp")
+default_font_size = 32
+
+[node name="LevelMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_vw54i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -25.0
+offset_right = 52.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Lvl1Button" parent="HBoxContainer" instance=ExtResource("2_u43w2")]
+layout_mode = 2
+level = ExtResource("3_klbox")
+
+[node name="Lvl2Button" parent="HBoxContainer" instance=ExtResource("2_u43w2")]
+layout_mode = 2
+text = "LEVEL 2"
+level = ExtResource("4_7uuds")
+
+[node name="Lvl3Button" parent="HBoxContainer" instance=ExtResource("2_u43w2")]
+layout_mode = 2
+text = "LEVEL 3"
+level = ExtResource("5_aia6o")
+
+[node name="Lvl4Button2" parent="HBoxContainer" instance=ExtResource("2_u43w2")]
+layout_mode = 2
+text = "LEVEL 4"
+level = ExtResource("6_kefvc")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -257.0
+offset_top = -1.0
+offset_right = 257.0
+offset_bottom = 91.0
+grow_horizontal = 2
+theme = SubResource("Theme_hav02")
+theme_override_colors/font_color = Color(0.493689, 0.528957, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 72
+text = "LEVEL SELECTION"

@@ -1,0 +1,366 @@
+[gd_scene load_steps=12 format=3 uid="uid://ded4q3taicaxk"]
+
+[ext_resource type="Texture2D" uid="uid://dvm6b4j4ie270" path="res://Sprites/Transition/Transition.png" id="1_68uhb"]
+[ext_resource type="Script" path="res://Scripts/start_menu.gd" id="1_kmf6g"]
+[ext_resource type="FontFile" uid="uid://dmxiujyrkindb" path="res://Fonts/Bubybins.ttf" id="2_m6laq"]
+[ext_resource type="Texture2D" uid="uid://csjfrw7o00r1t" path="res://Sprites/Bubbles/Bubble.png" id="3_f4fs2"]
+[ext_resource type="Animation" uid="uid://bk0uod1xy4wrt" path="res://Animations/main_menu_anim.res" id="5_1ytdu"]
+[ext_resource type="AudioStream" uid="uid://cebt07ndulq2d" path="res://Music/MenuMusic.mp3" id="6_68xg1"]
+
+[sub_resource type="Theme" id="Theme_0pkqs"]
+default_font = ExtResource("2_m6laq")
+default_font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pnf6e"]
+
+[sub_resource type="Animation" id="Animation_2mer7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BigBubble:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(700, 200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SmallBubbles:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(700, 350)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(166, 172)]
+}
+
+[sub_resource type="Animation" id="Animation_g0t1u"]
+resource_name = "credits_menu_anim"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(166, 172), Vector2(-960, 172)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q2ui3"]
+_data = {
+"RESET": SubResource("Animation_2mer7"),
+"credits_menu_anim": SubResource("Animation_g0t1u"),
+"main_menu_anim": ExtResource("5_1ytdu")
+}
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kmf6g")
+LevelSelectionScene = "res://Scenes/level_selection.tscn"
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_68uhb")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -314.0
+offset_right = 313.0
+offset_bottom = 113.0
+grow_horizontal = 2
+theme = SubResource("Theme_0pkqs")
+theme_override_colors/font_color = Color(0.493689, 0.528957, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 88
+text = "Bubble Journey"
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 960.0
+offset_right = 1920.0
+offset_bottom = 540.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -314.0
+offset_top = -87.0
+offset_right = 205.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0pkqs")
+theme_override_colors/font_color = Color(0.493689, 0.528957, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 24
+text = "Developed By
+Máximo Alfredo \"TheMaxcraft1\" Fain Fernández
+
+SITE
+Global Game Jam CUDI 2025
+"
+horizontal_alignment = 1
+
+[node name="CreditsBackButton" type="Button" parent="Control"]
+offset_left = 344.0
+offset_top = 375.0
+offset_right = 521.0
+offset_bottom = 439.0
+size_flags_horizontal = 0
+theme = SubResource("Theme_0pkqs")
+theme_override_colors/font_hover_pressed_color = Color(0.611765, 0.654902, 1, 1)
+theme_override_colors/font_hover_color = Color(0.611765, 0.654902, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.300644, 0.0143503, 0.999924, 1)
+theme_override_colors/font_focus_color = Color(0.611147, 0.655077, 1, 1)
+theme_override_colors/font_color = Color(0.493689, 0.528957, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pnf6e")
+text = "Back
+"
+
+[node name="BigBubble" type="Node2D" parent="."]
+position = Vector2(700, 200)
+scale = Vector2(2, 2)
+
+[node name="BubbleSprite" type="Sprite2D" parent="BigBubble"]
+texture = ExtResource("3_f4fs2")
+
+[node name="SmallBubbles" type="Node2D" parent="."]
+position = Vector2(700, 350)
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="SmallBubbles"]
+position = Vector2(0, -20.2381)
+scale = Vector2(0.360491, 0.360491)
+texture = ExtResource("3_f4fs2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SmallBubbles"]
+position = Vector2(-14.2857, -7.7381)
+scale = Vector2(0.360491, 0.360491)
+texture = ExtResource("3_f4fs2")
+
+[node name="Sprite2D3" type="Sprite2D" parent="SmallBubbles"]
+position = Vector2(2.97619, -7.14286)
+scale = Vector2(0.360491, 0.360491)
+texture = ExtResource("3_f4fs2")
+
+[node name="Sprite2D4" type="Sprite2D" parent="SmallBubbles"]
+position = Vector2(8.33333, 8.92857)
+scale = Vector2(0.360491, 0.360491)
+texture = ExtResource("3_f4fs2")
+
+[node name="Sprite2D5" type="Sprite2D" parent="SmallBubbles"]
+position = Vector2(-6.54762, 8.92857)
+scale = Vector2(0.360491, 0.360491)
+texture = ExtResource("3_f4fs2")
+
+[node name="Sprite2D10" type="Sprite2D" parent="SmallBubbles"]
+position = Vector2(-13.6905, 14.881)
+scale = Vector2(0.360491, 0.360491)
+texture = ExtResource("3_f4fs2")
+
+[node name="Sprite2D11" type="Sprite2D" parent="SmallBubbles"]
+position = Vector2(-19.0476, 2.38095)
+scale = Vector2(0.360491, 0.360491)
+texture = ExtResource("3_f4fs2")
+
+[node name="Sprite2D12" type="Sprite2D" parent="SmallBubbles"]
+position = Vector2(-17.2619, -10.119)
+scale = Vector2(0.360491, 0.360491)
+texture = ExtResource("3_f4fs2")
+
+[node name="Sprite2D13" type="Sprite2D" parent="SmallBubbles"]
+position = Vector2(-11.9048, -16.0714)
+rotation = 0.635362
+scale = Vector2(0.360491, 0.360491)
+texture = ExtResource("3_f4fs2")
+
+[node name="Sprite2D6" type="Sprite2D" parent="SmallBubbles"]
+position = Vector2(0.595238, 20.2381)
+scale = Vector2(0.360491, 0.360491)
+texture = ExtResource("3_f4fs2")
+
+[node name="Sprite2D9" type="Sprite2D" parent="SmallBubbles"]
+position = Vector2(12.5, 16.6667)
+scale = Vector2(0.360491, 0.360491)
+texture = ExtResource("3_f4fs2")
+
+[node name="Sprite2D7" type="Sprite2D" parent="SmallBubbles"]
+position = Vector2(19.0476, 1.78571)
+scale = Vector2(0.360491, 0.360491)
+texture = ExtResource("3_f4fs2")
+
+[node name="Sprite2D8" type="Sprite2D" parent="SmallBubbles"]
+position = Vector2(16.6667, -11.9048)
+rotation = -0.0118925
+scale = Vector2(0.360491, 0.360491)
+texture = ExtResource("3_f4fs2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 172.0
+offset_right = 343.0
+offset_bottom = 372.0
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_0pkqs")
+theme_override_colors/font_hover_pressed_color = Color(0.611765, 0.654902, 1, 1)
+theme_override_colors/font_hover_color = Color(0.611765, 0.654902, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.300644, 0.0143503, 0.999924, 1)
+theme_override_colors/font_focus_color = Color(0.611147, 0.655077, 1, 1)
+theme_override_colors/font_color = Color(0.493689, 0.528957, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pnf6e")
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_0pkqs")
+theme_override_colors/font_hover_pressed_color = Color(0.611765, 0.654902, 1, 1)
+theme_override_colors/font_hover_color = Color(0.611765, 0.654902, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.300644, 0.0143503, 0.999924, 1)
+theme_override_colors/font_focus_color = Color(0.611147, 0.655077, 1, 1)
+theme_override_colors/font_color = Color(0.493689, 0.528957, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pnf6e")
+text = "Options"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_0pkqs")
+theme_override_colors/font_hover_pressed_color = Color(0.611765, 0.654902, 1, 1)
+theme_override_colors/font_hover_color = Color(0.611765, 0.654902, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.300644, 0.0143503, 0.999924, 1)
+theme_override_colors/font_focus_color = Color(0.611147, 0.655077, 1, 1)
+theme_override_colors/font_color = Color(0.493689, 0.528957, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_pnf6e")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pnf6e")
+text = "Credits"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q2ui3")
+}
+autoplay = "main_menu_anim"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_68xg1")
+volume_db = -20.0
+autoplay = true
+
+[connection signal="pressed" from="Control/CreditsBackButton" to="." method="_on_credits_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

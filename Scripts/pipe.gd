@@ -17,4 +17,7 @@ func _on_body_entered(body: Node2D) -> void:
 		_on_player_win.emit()
 		
 		var passLevelMenu = get_tree().get_first_node_in_group("PassLevelMenu")
+		passLevelMenu.disableNextLevelButton = false
 		passLevelMenu.visible = true
+		
+		

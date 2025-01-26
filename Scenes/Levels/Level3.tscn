@@ -1,5 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://csigwc1ka7crk"]
 
+[ext_resource type="Script" path="res://Scenes/Levels/level.gd" id="1_6qr74"]
 [ext_resource type="PackedScene" uid="uid://7otsuh2drkuu" path="res://Scenes/LevelBackground.tscn" id="1_8ds6o"]
 [ext_resource type="PackedScene" uid="uid://bqxluxi80lfv2" path="res://Scenes/Boundaries.tscn" id="2_7yre0"]
 [ext_resource type="PackedScene" uid="uid://cdlquej35f8td" path="res://Scenes/Player.tscn" id="3_qct6q"]
@@ -9,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://288kc7i15jwk" path="res://Scenes/Gate.tscn" id="7_gpwml"]
 [ext_resource type="TileSet" uid="uid://cqjkse71hldd" path="res://Tileset/TileSet.tres" id="8_gig6k"]
 [ext_resource type="PackedScene" uid="uid://d3syqni3cw0p2" path="res://Scenes/StopWatch.tscn" id="9_rmu6x"]
+[ext_resource type="PackedScene" uid="uid://dc5annrvrkxv1" path="res://Scenes/next_level_menu.tscn" id="11_utkw0"]
 
 [node name="Level3" type="Node2D"]
+script = ExtResource("1_6qr74")
 
 [node name="LevelBackground" parent="." instance=ExtResource("1_8ds6o")]
 
@@ -43,5 +46,13 @@ tile_set = ExtResource("8_gig6k")
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="StopWatch" parent="HUD" instance=ExtResource("9_rmu6x")]
+
+[node name="NextLevelMenu" parent="HUD" instance=ExtResource("11_utkw0")]
+visible = false
+offset_left = 160.0
+offset_top = 30.0
+offset_right = -160.0
+offset_bottom = -30.0
+nextLevel = "res://Scenes/Levels/Level4.tscn"
 
 [connection signal="_on_player_win" from="Pipe" to="Player" method="_on_pipe_on_player_win"]

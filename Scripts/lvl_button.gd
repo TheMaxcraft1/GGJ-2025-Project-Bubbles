@@ -1,6 +1,6 @@
 extends Button
 
-@export var level: PackedScene
+@export var level: String
 
 
 var originalSize = scale

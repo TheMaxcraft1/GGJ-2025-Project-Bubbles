@@ -1,0 +1,35 @@
+
+name: CI
+
+# CONTROLS WHEN THE WORKFLOW WILL RUN
+on:
+# TRIGGERS WORKFLOW ON PUSH OR PR EVENTS ONLY FOR THE MAIN BRANCH
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+  # ALLOWS TO RUN THE WORKFLOW MANUALLY FROM ACTIONS TAB
+  workflow_dispatch:
+
+# A WORKFLOW RUN IS MADE UP OF ONE OR MORE JOBS THAT CAN RUN SEQUENTIALLY OR IN PARALLEL
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Godot Export
+        uses: firebelley/godot-export@v6.0.0
+        with:
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_mono_linux_x86_64.zip
+          godot_export_templates_download_uri: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
+          relative_project_path: ./
+          create_release: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          
+        
+  
+    

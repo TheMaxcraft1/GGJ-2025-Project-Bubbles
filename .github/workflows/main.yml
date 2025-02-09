@@ -47,6 +47,7 @@ jobs:
         run: |
           git tag $new_tag
           git push origin $new_tag
+          git push --tags
       # END AUTO-INCREMENTAL TAG
       
       - name: Godot Export
@@ -66,6 +67,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           generateReleaseNotes: true
-          tag: ${{ github.ref_name }}
+          tag: ${{ env.new_tag }}
           artifacts: ${{ steps.export.outputs.archive_directory }}/*
     

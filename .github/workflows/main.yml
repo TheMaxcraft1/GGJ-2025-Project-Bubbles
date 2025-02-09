@@ -20,8 +20,11 @@ jobs:
     permissions: write-all
 
     steps:
-      - uses: actions/checkout@v3
+      - name: checkout
+        uses: actions/checkout@v3
+        
       - name: Godot Export
+        id: export
         uses: firebelley/godot-export@v6.0.0
         with:
           godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
@@ -31,7 +34,6 @@ jobs:
           archive_output: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
-
 
       - name: create release
         uses: ncipollo/release-action@v1.14.0

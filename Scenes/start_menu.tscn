@@ -166,6 +166,7 @@ Global Game Jam CUDI 2025
 horizontal_alignment = 1
 
 [node name="CreditsBackButton" type="Button" parent="Control"]
+layout_mode = 0
 offset_left = 344.0
 offset_top = 375.0
 offset_right = 521.0
